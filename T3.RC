@@ -1,0 +1,55 @@
+#include "windows.h"
+#include "t3.h"
+
+IDI_T3ICON ICON t3.ico
+
+O_BITMAP BITMAP odn2.bmp
+X_BITMAP BITMAP xdn2.bmp
+GRID_BIT BITMAP grid.bmp							// Color bitmap.
+// GRID_BIT BITMAP mgrid.bmp						// Monochrome bitmap.
+
+TicMenu MENU
+	BEGIN
+		POPUP "&File"
+			BEGIN
+				MENUITEM "&New Game...\tF2", IDM_NEW
+				MENUITEM SEPARATOR
+				MENUITEM "&Exit", IDM_EXIT
+			END
+
+		POPUP "&Help"
+			BEGIN
+				MENUITEM "&About Tic-Tac-Toe...", IDM_ABOUT
+			END
+END
+
+AboutBox DIALOG 22, 17, 144, 47
+CAPTION "About Tic-Tac-Toe..."
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+BEGIN
+	CTEXT " Tic-Tac-Toe for Windows", -1, 0, 5, 144, 8
+	CTEXT "By Rob Fahrni", -1, 0, 14, 144, 8
+	CONTROL "Ok", IDOK, "BUTTON", WS_GROUP, 4, 28, 136, 12
+END
+
+NewGame DIALOG 10, 19, 185, 69
+CAPTION "New Game..."
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+BEGIN
+	LTEXT "Player &One Name:", 	300, 20, 12, 60, 8, WS_CHILD | WS_VISIBLE | WS_GROUP
+	EDITTEXT IDD_PLAYER1, 		83, 9, 76, 12, ES_LEFT | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP
+	LTEXT "Player &Two Name:",	-1, 20, 30, 59, 8
+	EDITTEXT IDD_PLAYER2, 		83, 27, 76, 12, ES_LEFT | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP
+	DEFPUSHBUTTON "Ok", 		IDOK, 42, 47, 40, 13, WS_CHILD | WS_VISIBLE | WS_TABSTOP
+	PUSHBUTTON "Cancel", 		IDCANCEL, 101, 47, 40, 13, WS_CHILD | WS_VISIBLE | WS_TABSTOP
+END
+
+
+TicMenu ACCELERATORS
+BEGIN
+	VK_F2, IDM_NEW, VIRTKEY
+END
+
+
+
+
